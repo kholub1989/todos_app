@@ -12,7 +12,7 @@ exports.getTodos = function(req, res){
 
 exports.createTodos = function(req, res){
     db.Todo.create(req.body)
-    .then(function(newtodo){
+    .then(function(newTodo){
         res.status(201).json(newTodo);
     })
     .catch(function(err){
@@ -28,9 +28,9 @@ exports.getTodo = function(req, res){
     .catch(function(err){
         res.send(err);
     })
-}
+ }
 
-exports.updateTodo = function(req, res){
+exports.updateTodo =  function(req, res){
     db.Todo.findOneAndUpdate({_id: req.params.todoId}, req.body, {new: true})
     .then(function(todo){
         res.json(todo);
@@ -38,7 +38,7 @@ exports.updateTodo = function(req, res){
     .catch(function(err){
         res.send(err);
     })
-}
+ }
 
 exports.deleteTodo = function(req, res){
     db.Todo.remove({_id: req.params.todoId})
